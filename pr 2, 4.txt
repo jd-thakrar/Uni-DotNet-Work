@@ -1,0 +1,408 @@
+Just Basic:
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace ConsoleApp1_JEET
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int age;
+            string dep, name;
+            Console.WriteLine("Welcome to Marwadi University");
+            age = 19;
+            name = "Jeet";
+            dep = "CE";
+            Console.WriteLine("Welcome "+ name+ " You are from "+ dep + "Your age is " + age);
+            age = Convert.ToInt32(Console.ReadLine());
+            name = "Jay";
+            dep = "CE AI";
+
+            Console.WriteLine("Wellocme {2} to department of {1}, your age is {0}", age, dep, name);
+
+        
+            EC1.Displayage(ref age);
+
+            if(age < 18)
+            {
+                Console.WriteLine("You are not eligible for voting");
+            }
+            else
+            {
+                Console.WriteLine("You are eligible to vote");
+            }
+
+            Manager mgr = new Manager();
+            mgr.name = name;
+            mgr.age = age;
+            mgr.tmsize = 5;
+            mgr.HoldMeeting();
+            Console.ReadKey();
+        }
+    }
+
+    public class EC1 { 
+        public static void Displayage(ref int a)
+        {
+            a = a + 5;  
+        }
+       
+    }
+
+
+    public class Employee
+    {
+        public string name;
+        public int age;
+
+        public void work()
+        {
+            Console.WriteLine("${name} is working");
+        }
+    } 
+
+    public class Manager : Employee{ 
+
+        public int tmsize;
+        public void HoldMeeting()
+        {
+            Console.WriteLine($"{name} is leading a meeting with {tmsize} people.");
+        }
+    }
+
+}
+
+
+
+Pr - 1 
+
+
+using System;
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Permissions;
+using System.Security.Principal;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PR_1
+{
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Student s1 = new Student();
+
+            s1.applicaiton();
+            s1.isscholar();
+            s1.showdata();
+
+            Console.ReadKey();
+        }
+    }
+
+    class Student
+    {
+        public int enrollment;
+        public string name;
+        public int age;
+        public string Dep;
+
+        private int fees;
+        private bool scholar;
+        private double finalfees;
+        public Student()
+        {
+            enrollment = 0;
+            name = "";
+            age = 0;
+            Dep = "Computer Eng";
+            fees = 0;
+            scholar = false;
+            finalfees = 0;
+        }
+
+        public void applicaiton()
+        {
+
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("    Wellcome to Student Module");
+            Console.WriteLine("------------------------------------");
+
+            Console.Write("Enter the enrollment no.: ");
+            enrollment = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter the Name: ");
+            name = Console.ReadLine();
+
+            Console.Write("Enter the age: ");
+            age = Convert.ToInt32(Console.ReadLine());
+
+            //Console.Write("Enter the Department: ");
+            //Dep = Console.ReadLine();
+
+            Console.Write("Enter the Fees: ");
+            fees = Convert.ToInt32(Console.ReadLine());
+        }
+
+        public void isscholar()
+        {
+            if (fees <= 50000)
+            {
+                scholar = true;
+            }
+            else { 
+                scholar = false; 
+            }
+        }
+
+        public void showdata()
+        {
+            finalfees = fees;
+            if (scholar)
+            {
+                finalfees = fees - (fees * 0.10);
+            }
+
+            Console.WriteLine("");
+
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("         Student Details");
+            Console.WriteLine("------------------------------------");
+
+            Console.WriteLine("Name of Student: " + name);
+
+            Console.WriteLine("enrollment : " + enrollment);
+
+            Console.WriteLine("age : " + age);
+
+            Console.WriteLine("fees : " + fees);
+
+            Console.WriteLine("Department : " + Dep);
+
+            Console.WriteLine("scholarship is applicable : " + scholar);
+
+            Console.WriteLine("Final Fees : " + finalfees);
+
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+Practical 2:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Practical_3
+{
+
+    class Employee
+    {
+        public int Empid;
+        public string Empname;
+        public double Basesalary;
+
+        public Employee()
+        {
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("        Employee Payroll System");
+            Console.WriteLine("-----------------------------------------");
+        }
+
+        public void AccepDetails()
+        {
+            Console.Write("Enter Employee ID: ");
+              Empid = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter Employee Name: ");
+            Empname = Console.ReadLine();
+
+            Console.Write("Enter Employee Base Salary: ");
+            Basesalary = Convert.ToDouble(Console.ReadLine());
+        }
+
+        public void DisplayDetails()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Employee ID :" + Empid);
+            Console.WriteLine("Employee Name: "+ Empname);
+            Console.WriteLine("EMployee Base Salary: " + Basesalary);
+        }
+
+        public virtual void CalculateNetSalary()
+        {
+            Console.WriteLine("Calculating Salary....");
+        }
+    }
+
+    class FullTimeEmp : Employee
+    {
+        public Double NetSalary;
+    
+        
+        public override void CalculateNetSalary()
+        {
+                var HRA = Basesalary * 0.20;
+            var DA = Basesalary * 0.10;
+            NetSalary = Basesalary + HRA + DA;
+            Console.WriteLine("Calculating Salary of Full Time Employee.....");
+            Console.WriteLine("Net Salary of Employee: " + NetSalary);
+        }
+    }
+    class  PartTimeEmp : Employee
+    {
+        public Double NetSalary;
+
+
+        public override void CalculateNetSalary()
+        {
+            NetSalary = Basesalary;
+            Console.WriteLine("Calculating Salary of Part Time Employee.....");
+            Console.WriteLine("Net Salary of Employee: " + NetSalary);
+        }
+    }
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int choice;
+
+            Console.WriteLine("1. Full Time Employee");
+            Console.WriteLine("2. Part Time Employee");
+            Console.Write("Select the type of EMployee: ");
+            choice = Convert.ToInt32(Console.ReadLine());
+            Employee emp = null;
+
+            if (choice == 1)
+            {
+                emp = new FullTimeEmp();
+            }
+            else if (choice == 2)
+            {
+                emp = new PartTimeEmp();
+            }
+            else
+            {
+                Console.Write("Enter Valid Choice");
+            }
+
+            emp.AccepDetails();
+            emp.DisplayDetails();
+            emp.CalculateNetSalary();
+
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pr 3 from other
+
+
+pr 4:
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="practical3.index" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <h1>Online Event Registration form</h1>
+    <hr />
+    <form id="form1" runat="server">
+       
+      <table>
+          <tr>
+              <td>
+                <asp:Label ID="name" runat="server" Text="Name"></asp:Label>
+              </td>
+              <td>
+                  <asp:TextBox ID="namebox" runat="server"></asp:TextBox>
+              </td>
+              
+          </tr>
+          <tr>
+              <td>
+                <asp:Label ID="Label1" runat="server" Text="GR No."></asp:Label>
+              </td>
+              <td>
+                 <asp:TextBox ID="Gr_no" runat="server"></asp:TextBox>
+              </td>
+          </tr>
+           <tr>
+               <td>
+                    <asp:Label ID="Label2" runat="server" Text="Mobile no"></asp:Label>
+               </td>
+               <td>
+                   <asp:TextBox ID="mobileno" runat="server"></asp:TextBox>
+               </td>
+           </tr>
+          <tr>
+              <td>
+                  <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+              </td>
+              <td>
+                  <asp:CheckBox ID="CheckBox1" runat="server" /> CODE
+                  <asp:CheckBox ID="CheckBox2" runat="server" /> EAT
+                  <asp:CheckBox ID="CheckBox3" runat="server" /> Sleep
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <asp:Label ID="Label4" runat="server" Text="Gender"></asp:Label>
+              </td>
+              <td>
+                  <asp:RadioButton ID="Male" runat="server" GroupName ="gender"/>Male
+                  <br />
+                  <asp:RadioButton ID="Female" runat="server" GroupName ="gender"/>Female
+              </td>
+          </tr>
+      </table>
+    </form>
+</body>
+</html>
+    

@@ -1,0 +1,348 @@
+Just Basic:
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace ConsoleApp1_JEET
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int age;
+            string dep, name;
+            Console.WriteLine("Welcome to Marwadi University");
+            age = 19;
+            name = "Jeet";
+            dep = "CE";
+            Console.WriteLine("Welcome "+ name+ " You are from "+ dep + "Your age is " + age);
+            age = Convert.ToInt32(Console.ReadLine());
+            name = "Jay";
+            dep = "CE AI";
+
+            Console.WriteLine("Wellocme {2} to department of {1}, your age is {0}", age, dep, name);
+
+        
+            EC1.Displayage(ref age);
+
+            if(age < 18)
+            {
+                Console.WriteLine("You are not eligible for voting");
+            }
+            else
+            {
+                Console.WriteLine("You are eligible to vote");
+            }
+
+            Manager mgr = new Manager();
+            mgr.name = name;
+            mgr.age = age;
+            mgr.tmsize = 5;
+            mgr.HoldMeeting();
+            Console.ReadKey();
+        }
+    }
+
+    public class EC1 { 
+        public static void Displayage(ref int a)
+        {
+            a = a + 5;  
+        }
+       
+    }
+
+
+    public class Employee
+    {
+        public string name;
+        public int age;
+
+        public void work()
+        {
+            Console.WriteLine("${name} is working");
+        }
+    } 
+
+    public class Manager : Employee{ 
+
+        public int tmsize;
+        public void HoldMeeting()
+        {
+            Console.WriteLine($"{name} is leading a meeting with {tmsize} people.");
+        }
+    }
+
+}
+
+
+
+Pr - 1 
+
+
+using System;
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Permissions;
+using System.Security.Principal;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PR_1
+{
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Student s1 = new Student();
+
+            s1.applicaiton();
+            s1.isscholar();
+            s1.showdata();
+
+            Console.ReadKey();
+        }
+    }
+
+    class Student
+    {
+        public int enrollment;
+        public string name;
+        public int age;
+        public string Dep;
+
+        private int fees;
+        private bool scholar;
+        private double finalfees;
+        public Student()
+        {
+            enrollment = 0;
+            name = "";
+            age = 0;
+            Dep = "Computer Eng";
+            fees = 0;
+            scholar = false;
+            finalfees = 0;
+        }
+
+        public void applicaiton()
+        {
+
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("    Wellcome to Student Module");
+            Console.WriteLine("------------------------------------");
+
+            Console.Write("Enter the enrollment no.: ");
+            enrollment = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter the Name: ");
+            name = Console.ReadLine();
+
+            Console.Write("Enter the age: ");
+            age = Convert.ToInt32(Console.ReadLine());
+
+            //Console.Write("Enter the Department: ");
+            //Dep = Console.ReadLine();
+
+            Console.Write("Enter the Fees: ");
+            fees = Convert.ToInt32(Console.ReadLine());
+        }
+
+        public void isscholar()
+        {
+            if (fees <= 50000)
+            {
+                scholar = true;
+            }
+            else { 
+                scholar = false; 
+            }
+        }
+
+        public void showdata()
+        {
+            finalfees = fees;
+            if (scholar)
+            {
+                finalfees = fees - (fees * 0.10);
+            }
+
+            Console.WriteLine("");
+
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("         Student Details");
+            Console.WriteLine("------------------------------------");
+
+            Console.WriteLine("Name of Student: " + name);
+
+            Console.WriteLine("enrollment : " + enrollment);
+
+            Console.WriteLine("age : " + age);
+
+            Console.WriteLine("fees : " + fees);
+
+            Console.WriteLine("Department : " + Dep);
+
+            Console.WriteLine("scholarship is applicable : " + scholar);
+
+            Console.WriteLine("Final Fees : " + finalfees);
+
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+
+
+
+PR - 3 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+
+    class Expense
+    {
+        public int Expid;
+        public string Category;
+        public double Amount;
+        public string Payment_Method;
+        public DateTime Date;
+
+   
+        public void addExpense()
+        {
+            Console.Write("Enter Expense ID:");
+            Expid = Convert.ToInt32(Console.ReadLine());
+
+            
+            Console.Write("Enter Category:");
+            Category = Console.ReadLine();
+
+            Console.Write("Enter Amount:");
+            Amount = Convert.ToDouble(Console.ReadLine());
+
+            try
+            {
+                if (Amount < 0)
+                {
+                    throw new ArgumentException("Expense cannot be negative.");
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter Amount:");
+                Amount = Convert.ToDouble(Console.ReadLine());
+            }
+
+            Console.Write("Enter Payment Method:");
+            Payment_Method = Console.ReadLine();
+
+            Console.Write("Enter Date (yyyy-MM-dd):");
+            Date = DateTime.Parse(Console.ReadLine());
+        }
+
+        public void displayExpense()
+        {
+            Console.WriteLine("Expense ID: " + Expid);
+            Console.WriteLine("Category: " + Category);
+            Console.WriteLine("Amount: " + Amount);
+            Console.WriteLine("Payment Method: " + Payment_Method);
+            Console.WriteLine("Date: " + Date.ToString("yyyy-MM-dd"));
+        }
+    }
+
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+            List<Expense> expenses = new List<Expense>();
+            int i = 0;
+            do
+            {
+                Console.WriteLine("==============================================");
+                Console.WriteLine("         Expense Management System");
+                Console.WriteLine("==============================================");
+                Console.WriteLine("1. Add Expense");
+                Console.WriteLine("2. Display Expenses");
+                Console.WriteLine("3. Total Expense Amount");
+                Console.WriteLine("4. Exit");
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    i = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine();
+                } catch (Exception ex) {
+                    Console.WriteLine();
+                    Console.WriteLine("----------------------------------------------");
+                    Console.WriteLine("Enter Valid Integer Choice");
+                    Console.WriteLine("----------------------------------------------");
+                    Console.WriteLine();
+                }
+                Expense e = new Expense();
+                if (i == 1)
+                {
+                    e.addExpense();
+                    expenses.Add(e);
+                    Console.WriteLine("----------------------------------------------");
+                    Console.WriteLine("Expense Added Successfully");
+                    Console.WriteLine("----------------------------------------------");
+                    Console.WriteLine();
+                    Console.WriteLine();
+
+                }
+                else if (i == 2)
+                {
+                    foreach (Expense exp in expenses)
+                    {
+                        exp.displayExpense();
+                        Console.WriteLine("----------------------------------------------");
+                        Console.WriteLine();
+                    }
+                }
+                else if (i == 3)
+                {
+                    double sum = 0;
+                    foreach (Expense exp in expenses)
+                    {
+                        sum += exp.Amount;
+
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine("----------------------------------------------");
+                    Console.WriteLine("Total Expense Amount: " + sum);
+                    Console.WriteLine("----------------------------------------------");
+                    Console.WriteLine();
+
+                }
+                else if(i == 4)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("----------------------------------------------");
+                    Console.WriteLine("Exiting the Program");
+                    Console.WriteLine("----------------------------------------------");
+                    Console.WriteLine();
+                }
+            } while (i < 4);
+        }
+    }
+}
