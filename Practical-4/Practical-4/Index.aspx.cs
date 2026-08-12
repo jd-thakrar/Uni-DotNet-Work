@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,6 +22,7 @@ namespace Practical_4
             string Enr = TextBox4.Text;
             string Address = TextBox3.Text;
             string gender = "";
+            DateTime date = Calendar1.SelectedDate;
             if (RadioButton1.Checked)
             {
                 gender = "Male";
@@ -43,7 +45,7 @@ namespace Practical_4
                 hobbies += "Drawing ";
             }
 
-            Label9.Text = "Name: " + name + "<br/>Email: " + email + "<br/>Enrollment No: " + Enr + "<br/>Address: " + Address + "<br/>Gender: " + gender + "<br/>Country: " + country + "<br/>Hobbies: " + hobbies;
+            Label9.Text = "Name: " + name + "<br/>Email: " + email + "<br/>Enrollment No: " + Enr + "<br/>Address: " + Address + "<br/>Gender: " + gender + "<br/>Country: " + country + "<br/>Hobbies: " + hobbies +"<br/>Date: "+ date;
         }
 
         protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
@@ -61,6 +63,18 @@ namespace Practical_4
         protected void CustomValidator2_ServerValidate(object source, ServerValidateEventArgs args)
         {
             if(CheckBox1.Checked || CheckBox2.Checked || CheckBox3.Checked)
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
+            }
+        }
+
+        protected void DateValid_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (Calendar1.SelectedDate != DateTime.MinValue)
             {
                 args.IsValid = true;
             }

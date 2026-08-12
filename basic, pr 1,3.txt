@@ -346,3 +346,22 @@ namespace ConsoleApp2
         }
     }
 }
+
+
+
+
+
+
+
+NOTE:
+AIM:
+-	Font Type: Cambria
+-	Font Size: 12
+-	Bold
+-	Line Spacing: 1.5
+Source Code
+-	Font Type: Cascadia Mono
+-	Font Size: 10
+-	Normal
+-	Line Spacing: 1.0
+

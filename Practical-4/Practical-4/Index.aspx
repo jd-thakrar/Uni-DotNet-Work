@@ -4,19 +4,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <style type="text/css">
-        .auto-style1 {
-            height: 25px;
-        }
-    </style>
+    <title>Student Registration Form</title>
+
 </head>
-<body style="background-color: cadetblue">
+<body style="background-color: #e2e8f0">
     <div style="display:flex; justify-content:center">
         <form id="form1" runat="server">
-            <table style="border-collapse: separate; border-spacing: 0px 15px; border: 2px solid black; background-color: aliceblue; border-radius: 2px; padding: 5px 15px;">
+            <table style="border-collapse: separate; border-spacing: 0px 15px; border: 1px solid #cbd5e1; background-color: #ffffff; border-radius: 8px; padding: 15px 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
                 <tr>
-                    <td colspan="2" style="text-align: center; font-weight: 500">Registration</td>
+                    <td colspan="3" style="text-align: center; font-weight: 500; border-bottom: 2px solid black"><h2>Student Registration Form</h2></td>
                 </tr>
                 <tr>
                     <td><asp:Label ID="Label1" runat="server" Text="Label">Name:</asp:Label></td>
@@ -88,12 +84,17 @@
                     <td><asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Select the hobbies" ForeColor="Red" OnServerValidate="CustomValidator2_ServerValidate"></asp:CustomValidator></td>
                 </tr>
                 <tr>
+                    <td><asp:Label ID="Label13" runat="server" Text="Label">Date:</asp:Label></td>
+                    <td><asp:Calendar ID="Calendar1" runat="server"></asp:Calendar></td>
+                    <td><asp:CustomValidator ID="DateValid" runat="server" ErrorMessage="You must choose a date." ForeColor="Red" OnServerValidate="DateValid_ServerValidate"></asp:CustomValidator></td>
+                </tr>
+                <tr>
                     <td><asp:Label ID="Label7" runat="server" Text="Label">Event:</asp:Label></td>
                     <td><asp:Image ID="Image1" runat="server" Height="233px" ImageUrl="~/Images/GSA.png" Width="184px" /></td>    
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center">
-                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" style="background-color: #1e1e1e; color: #ffffff; border: none; padding: 10px 24px; font-size: 14px; font-weight: 600; border-radius: 6px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"/>
                     </td>
                 </tr>
             </table>
