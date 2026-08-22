@@ -17,7 +17,6 @@ namespace Practical_1
             s1.showdata();
 
             Console.ReadKey();
-
         }
     }
     class Student
@@ -26,7 +25,6 @@ namespace Practical_1
         public string name;
         public int age;
         public string Dep;
-
         private int fees;
         private bool scholar;
         private double finalfees;
@@ -91,19 +89,12 @@ namespace Practical_1
             Console.WriteLine("------------------------------------");
 
             Console.WriteLine("Name of Student: " + name);
-
             Console.WriteLine("enrollment : " + enrollment);
-
             Console.WriteLine("age : " + age);
-
             Console.WriteLine("fees : " + fees);
-
             Console.WriteLine("Department : " + Dep);
-
             Console.WriteLine("scholarship is applicable : " + scholar);
-
             Console.WriteLine("Final Fees : " + finalfees);
-
             Console.ReadKey();
         }
     }
