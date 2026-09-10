@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+	<Ad>
+		<ImageUrl>~/Image/1.png</ImageUrl>
+		<NavigateUrl>https://www.cbthakrar.com</NavigateUrl>
+		<AlternateText>Structure</AlternateText>
+		<Impressions>80</Impressions>
+	</Ad>
+	<Ad>
+		<ImageUrl>~/Image/2.png</ImageUrl>
+		<NavigateUrl>https://www.jd-thakrar.vercel.app</NavigateUrl>
+		<AlternateText>Structure 2</AlternateText>
+		<Impressions>80</Impressions>
+	</Ad>
+</Advertisements>	
