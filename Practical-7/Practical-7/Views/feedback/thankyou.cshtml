@@ -1,0 +1,23 @@
+﻿﻿@model Practical_7.Models.feedback
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thank You</title>
+</head>
+<body>
+    <div>
+        <h1>Thank you @Model.Name for submitting the form</h1>
+        <h3>Your Details:</h3>
+        <p><strong>Name:</strong> @Model.Name</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Rating:</strong> @Model.Rating</p>
+        <p><strong>Message:</strong> @Model.Message</p>
+    </div>
+</body>
+</html>

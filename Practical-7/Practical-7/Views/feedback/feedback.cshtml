@@ -1,0 +1,37 @@
+﻿@model Practical_7.Models.feedback
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @using (Html.BeginForm("feedback", "feedback", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken() 
+
+        <div>
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name)
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Rating)
+            @Html.TextBoxFor(m => m.Rating) 
+            @Html.ValidationMessageFor(m => m.Rating)
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Message)
+            @Html.TextAreaFor(m => m.Message)
+            @Html.ValidationMessageFor(m => m.Message)
+        </div>
+
+        <button type="submit">Submit</button>
+    }
+</div>
