@@ -17,6 +17,14 @@ namespace Practical_6.Controllers
             return View("Product", P);
         }
 
+        public ActionResult Details(int id)
+        {
+            List<ProductDetails> pall = GetData();
+            ProductDetails p = new ProductDetails();
+            p = pall.FirstOrDefault(x => x.id == id);
+            return View("Details", p);
+        }
+
         public List<ProductDetails> GetData()
         {
 

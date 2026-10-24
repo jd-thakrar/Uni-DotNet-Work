@@ -11,25 +11,28 @@
     <title>Product</title>
 </head>
 <body>
-    <div> 
-        <p>Product Details</p>
+    <div>
+        <h2>Product Details</h2>
 
-        @foreach(var i in Model)
+        @foreach (var i in Model)
         {
-            <img src="@i.imageUrl" width="150" height="150"/>
-            <br />
+            <img src="@i.imageUrl" width="150" height="150" />
+          
 
-            <p>Product Category: @i.category</p>
-            <br />
+            <h3>Product Name: @i.name</h3>
+           
 
-            <p>Product Name: @i.name</p>
-            <br />
+            <h4>Product Category: @i.category</h4>
+          
 
-            <p>Product Description: @i.description</p>
-            <br />
 
-            <p>Product Price: @i.price</p>
+            <h4>Product Price: @i.price</h4>
+
+
+            @Html.ActionLink("Click for more details", "Details", "ProductDetails", new { id = i.id }, null)
+
             <hr />
+
         }
     </div>
 </body>

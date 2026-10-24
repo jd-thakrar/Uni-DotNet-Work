@@ -17,5 +17,6 @@ namespace Practical_6.Models
         public string description { get; set; }
 
         public int price { get; set; }
+
     }
 }
